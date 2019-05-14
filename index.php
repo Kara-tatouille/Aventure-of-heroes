@@ -1,16 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Accueil</title>
 </head>
 <body>
-
-<h1>Coucou</h1>
-
-<script src="js/main.js"></script>
+    <?php require_once('./templates/header.html') ?>
+    <main>
+        <section>
+            <p>Descriptif du jeu</p>
+        </section>
+        <div>
+            <a href="./register.php">Jouer</a>
+        </div>
+    </main>
 </body>
 </html>
