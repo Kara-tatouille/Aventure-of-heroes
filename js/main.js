@@ -6,10 +6,11 @@ class Character {
         this.hp = hp;
         this.atk = atk;
         this.xp = xp;
-        this.potion = 3;
+        this.potion = 1;
     }
 
-    attack (target) {
+
+    attack (target, efficiency) {
 
         //Si le joueur est en vie
         if (this.hp <= 0) {
@@ -19,77 +20,40 @@ class Character {
         //Si la cible à de la vie
         if (target.hp > 0) {
 
-            //Si l'attaque ne tue pas la cible
-            if (target.hp - this.atk > 0) {
-                target.hp -= this.atk;
-                return `${this.name} attaque ${target.name} et lui inflige ${this.atk} dmg!`
-            }
-
-            //Si l'attaque tue
-            else {
-                target.hp = 0;
-                this.xp += target.xp;
-                return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!`
-            }
-        }
-
-        else {
-            return `${target.name} est déja mort, ${this.name} ne peut pas attaquer!`
-        }
-    }
-
-    strongAttack (target) {
-
-        //Si le joueur est en vie
-        if (this.hp <= 0) {
-            return `${this.name} est mort et ne peut pas attaquer!`
-        }
-
-        //Si la cible à de la vie
-        if (target.hp > 0) {
-
-            let damage = this.atk * 1.5;
+            let damage = this.atk * efficiency;
             //Si l'attaque ne tue pas la cible
             if (target.hp - damage > 0) {
                 target.hp -= damage;
-                return `${this.name} attaque ${target.name}. C'est super efficace! ${this.name} inflige ${damage} dmg!`
+
+                if (efficiency === 1.5) {
+                    return `${this.name} attaque ${target.name}. C'est super efficace! ${this.name} inflige ${damage} dmg!`
+                }
+                else if (efficiency === 0.5) {
+                    return `${this.name} attaque ${target.name}. Parré!! ${this.name} inflige ${damage} dmg!`
+                }
+                else if (efficiency === 1) {
+                    return `${this.name} attaque ${target.name} et lui inflige ${this.atk} dmg!`
+                }
+                else {
+                    return "Chose pas normal"
+                }
             }
 
             //Si l'attaque tue
             else {
                 target.hp = 0;
                 this.xp += target.xp;
-                return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!`
-            }
-        }
 
-        else {
-            return `${target.name} est déja mort, ${this.name} ne peut pas attaquer!`
-        }
-    }
+                let drop = Math.random();
 
-    parriedAttack (target) {
-
-        //Si le joueur est en vie
-        if (this.hp <= 0) {
-            return `${this.name} est mort et ne peut pas attaquer!`
-        }
-
-        //Si la cible à de la vie
-        if (target.hp > 0) {
-
-            let damage = this.atk * 0.5;
-            //Si l'attaque ne tue pas la cible
-            if (target.hp - damage > 0) {
-                target.hp -= damage;
-                return `${this.name} attaque ${target.name}. Parré!! ${this.name} inflige ${damage} dmg!`
-            }
-
-            //Si l'attaque tue
-            else {
-                target.hp = 0;
-                this.xp += target.xp;
-                return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!`
+                if (drop > 0.8 && this.potion < 2) {
+                    this.potion++;
+                    return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!\n
+                            ${this.name} a drop une potion!`
+                }
+                else {
+                    return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!`
+                }
             }
         }
 
@@ -111,11 +75,11 @@ class Character {
 
                 switch (typeTarget) {
                     case 0:
-                        return this.attack(target);
+                        return this.attack(target, 0.5);
                     case 1:
-                        return this.strongAttack(target);
+                        return this.attack(target, 1);
                     case 2:
-                        return this.parriedAttack(target);
+                        return this.attack(target, 1.5);
                     default:
                         return "1 That shouldn't happen.."
                 }
@@ -130,6 +94,10 @@ class Character {
         return `${this.name} a ${this.hp} pv, ${this.atk} points d'attaque, ${this.potion} potion(s) et ${this.xp} xp.`
     }
 
+    //TODO : tu remplace heal par usePotion
+    // au cas ou t'ai d'autres potions
+    // tu fais une methode AddHealth (et peut etre RemoveHealth)
+    // que t'appelle ensuite en fonction de la potion choisie
     //Boire une potion
     heal () {
 
@@ -168,6 +136,20 @@ class Character {
             return `${this.name} est déja au maximum de sa santé!`
         }
     }
+
+    //Level up?
+    levelUp() {
+        if (player.xp > 99) {
+            //Echange 100 xp pour 10 atk
+            player.atk += 10;
+            player.xp -= 100;
+            //Empèche xp d'être négatif
+            if (player.xp < 0) {
+                player.xp = 0;
+            }
+        }
+    }
+
 }
 
 let potion = {
@@ -180,19 +162,19 @@ let monster = new Character("Filsdepute", "50", "20", 10);
 console.log(player.describe());
 console.log(monster.describe());
 
-console.log(player.attack(monster));
-console.log(monster.attack(player));
-console.log(player.attack(monster));
-
-console.log(player.describe());
-
+// console.log(player.attack(monster));
+// console.log(monster.attack(player));
+// console.log(player.attack(monster));
+//
+// console.log(player.describe());
+//
 console.log(player.heal());
-
-console.log(player.describe());
-
+//
+// console.log(player.describe());
+//
 console.log(player.attackPfs(monster));
 console.log(monster.attackPfs(player));
-
-
-console.log(player.describe());
-console.log(monster.describe());
+//
+//
+// console.log(player.describe());
+// console.log(monster.describe());
