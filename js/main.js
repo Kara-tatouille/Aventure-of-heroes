@@ -10,7 +10,13 @@ class Character {
     }
 
     attack (target) {
-        //Vérifie si la cible à de la vie
+
+        //Si le joueur est en vie
+        if (this.hp <= 0) {
+            return `${this.name} est mort et ne peut pas attaquer!`
+        }
+
+        //Si la cible à de la vie
         if (target.hp > 0) {
 
             //Si l'attaque ne tue pas la cible
@@ -26,10 +32,98 @@ class Character {
                 return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!`
             }
         }
+
         else {
-            return `${target.name} est déja mort!`
+            return `${target.name} est déja mort, ${this.name} ne peut pas attaquer!`
         }
     }
+
+    strongAttack (target) {
+
+        //Si le joueur est en vie
+        if (this.hp <= 0) {
+            return `${this.name} est mort et ne peut pas attaquer!`
+        }
+
+        //Si la cible à de la vie
+        if (target.hp > 0) {
+
+            let damage = this.atk * 1.5;
+            //Si l'attaque ne tue pas la cible
+            if (target.hp - damage > 0) {
+                target.hp -= damage;
+                return `${this.name} attaque ${target.name}. C'est super efficace! ${this.name} inflige ${damage} dmg!`
+            }
+
+            //Si l'attaque tue
+            else {
+                target.hp = 0;
+                this.xp += target.xp;
+                return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!`
+            }
+        }
+
+        else {
+            return `${target.name} est déja mort, ${this.name} ne peut pas attaquer!`
+        }
+    }
+
+    parriedAttack (target) {
+
+        //Si le joueur est en vie
+        if (this.hp <= 0) {
+            return `${this.name} est mort et ne peut pas attaquer!`
+        }
+
+        //Si la cible à de la vie
+        if (target.hp > 0) {
+
+            let damage = this.atk * 0.5;
+            //Si l'attaque ne tue pas la cible
+            if (target.hp - damage > 0) {
+                target.hp -= damage;
+                return `${this.name} attaque ${target.name}. Parré!! ${this.name} inflige ${damage} dmg!`
+            }
+
+            //Si l'attaque tue
+            else {
+                target.hp = 0;
+                this.xp += target.xp;
+                return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!`
+            }
+        }
+
+        else {
+            return `${target.name} est déja mort, ${this.name} ne peut pas attaquer!`
+        }
+    }
+
+    attackPfs(target) {
+
+        //Si le joueur est en vie
+        if (this.hp <= 0) {
+            return `${this.name} est mort et ne peut pas attaquer!`
+        }
+            //Si la cible est en vie
+            if (target.hp > 0) {
+
+                let typeTarget = Math.floor(Math.random() * 3);
+
+                switch (typeTarget) {
+                    case 0:
+                        return this.attack(target);
+                    case 1:
+                        return this.strongAttack(target);
+                    case 2:
+                        return this.parriedAttack(target);
+                    default:
+                        return "1 That shouldn't happen.."
+                }
+            }
+            else {
+                return `${target.name} est déja mort, ${this.name} ne peut pas attaquer!`
+            }
+        }
 
     //Donne le nom, hp, atk et xp de
     describe () {
@@ -95,3 +189,10 @@ console.log(player.describe());
 console.log(player.heal());
 
 console.log(player.describe());
+
+console.log(player.attackPfs(monster));
+console.log(monster.attackPfs(player));
+
+
+console.log(player.describe());
+console.log(monster.describe());
