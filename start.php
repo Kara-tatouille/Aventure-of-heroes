@@ -26,6 +26,6 @@
             <button id="button"> top</button>
         </section>
     </main>
-<script src="./dialogue.js"></script>
+<script src="./js/dialogue.js"></script>
 </body>
 </html>
