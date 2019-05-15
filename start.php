@@ -13,7 +13,7 @@
                 <div class="attack"></div>
                 <div class="xp"></div>
             </div>
-            <div>
+            <div id="test">
                 <div id="newDialog">
 <!-- Intro -->                    
                     <p class="text">Élevée par votre mère depuis votre naissance elle vous raconte depuis toujours que votre père est parti combattre le mal qui règne encore à ce jour sur la région.</p>
