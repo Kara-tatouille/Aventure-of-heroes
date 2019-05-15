@@ -11,8 +11,9 @@
             <p>Descriptif du jeu</p>
         </section>
         <div>
-            <a href="./register.php">Jouer</a>
+            <a href="./start.php">Jouer</a>
         </div>
     </main>
+
 </body>
 </html>
