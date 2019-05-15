@@ -1,6 +1,6 @@
 class Character {
 
-    constructor (name, hp, atk, xp) {
+    constructor(name, hp, atk, xp) {
         this.name = name;
         this.maxhp = hp;
         this.hp = hp;
@@ -10,7 +10,7 @@ class Character {
     }
 
 
-    attack (target, efficiency) {
+    attack(target, efficiency) {
 
         //Si le joueur est en vie
         if (this.hp <= 0) {
@@ -48,6 +48,7 @@ class Character {
 
                 if (drop > 0.8 && this.potion < 2) {
                     this.potion++;
+                    checkXp();
                     return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!\n
                             ${this.name} a drop une potion!`
                 }
@@ -90,16 +91,12 @@ class Character {
         }
 
     //Donne le nom, hp, atk et xp de
-    describe () {
-        return `${this.name} a ${this.hp} pv, ${this.atk} points d'attaque, ${this.potion} potion(s) et ${this.xp} xp.`
+    describe() {
+        return `${this.name} a ${this.hp}/${this.maxhp} pv, ${this.atk} points d'attaque, ${this.potion} potion(s) et ${this.xp} xp.`
     }
 
-    //TODO : tu remplace heal par usePotion
-    // au cas ou t'ai d'autres potions
-    // tu fais une methode AddHealth (et peut etre RemoveHealth)
-    // que t'appelle ensuite en fonction de la potion choisie
     //Boire une potion
-    heal () {
+    usePotion() {
 
         //Si la personne peut boire une potion
         if (this.hp < this.maxhp) {
@@ -109,26 +106,12 @@ class Character {
                 return `${this.name} n'a plus de potion!`
             }
             else {
-                this.potion --;
-
-                //Si la potion ne soigne pas totallement
-                if (this.hp + potion.soins < this.maxhp) {
-                    this.hp += potion.soins;
-                    return `${this.name} bois une potion et récupère ${potion.soins} pv.`
-                }
-
-                //Si la potion remonte les hp au max
-                else {
-                    let soinsReduced = this.maxhp - this.hp;
-                    this.hp += soinsReduced;
-                    return `${this.name} bois une potion et récupère ${soinsReduced} pv.`
-
-                }
+                this.potion--;
+                this.addHealth(50);
             }
         }
-
         //Si la personne est morte
-        else if (this.hp === 0) {
+        else if (this.hp <= 0) {
             return `${this.name} est mort.`
         }
         //Si les hp sont au max
@@ -137,44 +120,57 @@ class Character {
         }
     }
 
-    //Level up?
-    levelUp() {
-        if (player.xp > 99) {
-            //Echange 100 xp pour 10 atk
-            player.atk += 10;
-            player.xp -= 100;
-            //Empèche xp d'être négatif
-            if (player.xp < 0) {
-                player.xp = 0;
-            }
+    addHealth(amount) {
+
+        //Si la potion ne soigne pas totallement
+        if (this.hp + amount < this.maxhp) {
+            this.hp += amount;
+            return `${this.name} récupère ${amount} pv.`
+        }
+
+        //Si la potion remonte les hp au max
+        else {
+            let soinsReduced = this.maxhp - this.hp;
+            this.hp += soinsReduced;
+            return `${this.name} bois une potion et récupère ${soinsReduced} pv.`
+
         }
     }
-
 }
 
-let potion = {
-    soins: 50
-};
+//Level up?
+function checkXp() {
+    if (player.xp > 99) {
+        //Echange 100 xp pour 10 atk,20hp et 20hpmax
+        player.atk += 10;
+        player.maxhp += 20;
+        player.hp += 20;
+        player.xp -= 100;
+        //Empèche xp d'être négatif
+        if (player.xp < 0) {
+            player.xp = 0;
+        }
+    }
+}
 
-let player = new Character("Roger", "100", "30", 0);
-let monster = new Character("Filsdepute", "50", "20", 10);
 
-console.log(player.describe());
-console.log(monster.describe());
+let player = new Character("Roger",             100,30, 0);
 
-// console.log(player.attack(monster));
-// console.log(monster.attack(player));
-// console.log(player.attack(monster));
-//
-// console.log(player.describe());
-//
-console.log(player.heal());
-//
-// console.log(player.describe());
-//
-console.log(player.attackPfs(monster));
-console.log(monster.attackPfs(player));
-//
-//
-// console.log(player.describe());
-// console.log(monster.describe());
+let wolf = new Character  ("Loup",                  45, 10, 25);//commence lvl 1, fini lvl 1 25xp
+
+let bandit = new Character("Bandit",                90, 7 , 30);//commence lvl 1, fini lvl 1 30xp
+
+let goblin = new Character("Goblin",                120, 15, 75);//commence lvl 1, fini lvl 2 0/5xp
+let goblinBoss = new Character("Roi des goblins",   180, 20, 100);//commence lvl 2, fini lvl 3 0/5xp
+
+let sailor = new Character("Marin ivre",            135, 10, 75);//commence lvl 1, fini lvl 2 0/5xp
+let sailorBoss = new Character("Capitaine",         150, 15, 90);//commence lvl 1, fini lvl 2 90/95xp
+
+let treant = new Character("Tréant",                200, 12, 95);//commence lvl 2/3 90/95/0/5 xp, fini lvl 3/4 85/90/95/0
+let treantBoss = new Character("Tréant géant",      270, 15, 115);//commence lvl 3/4 85/90/95/0 xp, fini lvl 5 0/5/10/15
+
+let spider = new Character("Araignée",              200, 10, 95);//commence lvl 2/3 90/95/0/5 xp, fini lvl 3/4 85/90/95/0
+let guivreBoss = new Character("Guivre géante",     240, 15, 110);//commence lvl 3/4 85/90/95/0 xp, fini lvl 4/5 95/0/5/10
+
+let endBoss = new Character   ("Lucie",             300, 20, 300);//commence lvl 4/5
+
