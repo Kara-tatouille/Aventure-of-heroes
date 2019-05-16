@@ -225,18 +225,17 @@ const victoryBtn = document.getElementById("victoryBtn");
 
 // Managing fights event
 document.body.addEventListener("click", function (evt) {
+    //If the button being clicked on has an id like "fightForest" or "fightPlains"..
     if(typeof(String(evt.target.id).split('fight')[1]) !== 'undefined') {
+        //Gets the name of the mob being fought
         let fightType = String(evt.target.nextSibling.nextSibling.id).split('fight')[1];
+        //Gets the object of the mob being fought
+        let currentMonster = getMonster(fightType);
 
-        currentMonster = getMonster(fightType);
-
+        //show the fight scene
         document.getElementById("fight"+fightType).classList.remove("noDisplay");
         document.getElementById(fightType).classList.remove("noDisplay");
 
-        document.getElementById("victoryBtn"+fightType).addEventListener("click", function () {
-            document.getElementById("fight"+fightType).classList.add("noDisplay");
-            document.getElementById("continuedForest").classList.remove("noDisplay");
-        });
 
         document.getElementById("monsterAction"+fightType).innerHTML = currentMonster.action("wait");
         document.getElementById("playerAction"+fightType).innerHTML = player.action("wait",true);
@@ -250,32 +249,45 @@ document.body.addEventListener("click", function (evt) {
 
 //Managing actions events
 document.body.addEventListener("click", function (evt) {
+    //Gets the id of what button is being clicked on
     let eventId = String(evt.target.id);
+    //Gets the first class of what is being clicked on
     let eventClass = String(evt.target.className).split(' ')[0];
+    //Gets $type = the monster being fought
     let monsterType = eventClass.substring(6);
-
+    //if the button is an action button
     if (eventClass === 'action'+monsterType ) {
+        //Yes, the first 3 buttons do the same thing, but they leave the illusion you're playing rock paper scissors
+        //If the button is a fast attack
         if (eventId === "fstAtk"+monsterType) {
             document.getElementById("playerAction"+monsterType).innerHTML = player.attackPfs(currentMonster);
             document.getElementById("monsterAction"+monsterType).innerHTML = currentMonster.attackPfs(player);
         }
+        //If the button is a strong attack
         else if (eventId === "strAtk"+monsterType) {
             document.getElementById("playerAction"+monsterType).innerHTML = player.attackPfs(currentMonster);
             document.getElementById("monsterAction"+monsterType).innerHTML = currentMonster.attackPfs(player);
         }
+        //If the button if a riposte
         else if (eventId === "riposte"+monsterType) {
             document.getElementById("playerAction"+monsterType).innerHTML = player.attackPfs(currentMonster);
             document.getElementById("monsterAction"+monsterType).innerHTML = currentMonster.attackPfs(player);
         }
+        //If the button is a usePotion
         else if (eventId === "usePotion"+monsterType) {
             document.getElementById("playerAction"+monsterType).innerHTML = player.usePotion();
             document.getElementById("monsterAction"+monsterType).innerHTML = currentMonster.attackPfs(player);
         }
-
+        //Describe you and the monster, check if the monster or player is K.O
         document.getElementById("describeMonster"+monsterType).innerHTML = currentMonster.describe();
         document.getElementById("describePlayer"+monsterType).innerHTML = player.describe(true);
         victoryState(monsterType);
     }
+});
+
+document.getElementById("victoryBtn"+fightType).addEventListener("click", function () {
+    document.getElementById("fight"+fightType).classList.add("noDisplay");
+    document.getElementById("continuedForest").classList.remove("noDisplay");
 });
 
 function victoryState(monster) {
@@ -291,10 +303,10 @@ function victoryState(monster) {
 
 function getMonster(monster) {
     switch (monster) {
-        case 'Wolf':
+        case 'wolf':
             return wolf;
 
-        case 'Bandit':
+        case 'bandit':
             return bandit;
     }
 }
