@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* HEADER */
+header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    padding-top: 30px;
+    padding-bottom: 5px;
+}
+header img{
+    height: 150px;
+    width: 160px;
+}
+/* BODY */
+body{
+    background: 
+        url("../img/qlgoLVk.png")
+        no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+/* MAIN */
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    width: 100vw;
+}
+.explain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+    background-color:rgba(125, 76, 42, 0.8);
+    height: 600px;
+    width: 500px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+section{
+    display: flex;
+}
+.coups{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+.sup{
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    justify-content: space-around;
+    display: flex;
+}
+.attack{
+    margin: auto;
+    width: 100px;
+}
+.superior{
+    margin: auto;
+    width: 50px;
+}
+.play{
+    background-color: green;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+p{
+    padding: 7px 0;
+}
