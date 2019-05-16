@@ -229,50 +229,97 @@ const buttonFightCastle = document.getElementById("fightCastle");
 const divFight = document.getElementById("fight");
 
 //Div fight in template
-const monster = document.getElementById("monster");
-const monsterAction = document.getElementById("monsterAction");
-const playerAction = document.getElementById("playerAction");
-const describeMonster = document.getElementById("describeMonster");
-const describePlayer = document.getElementById("describePlayer");
-const victory = document.getElementById("victory");
-
-//Button fight in template
-const fstAtk = document.getElementById("fstAtk");
-const strAtk = document.getElementById("strAtk");
-const riposte = document.getElementById("riposte");
-const usePotion = document.getElementById("usePotion");
-const victoryBtn = document.getElementById("victoryBtn");
+// const monster = document.getElementById("monster");
+// const monsterAction = document.getElementById("monsterAction");
+// const playerAction = document.getElementById("playerAction");
+// const describeMonster = document.getElementById("describeMonster");
+// const describePlayer = document.getElementById("describePlayer");
+// const victory = document.getElementById("victory");
+//
+// //Button fight in template
+// const fstAtk = document.getElementById("fstAtk");
+// const strAtk = document.getElementById("strAtk");
+// const riposte = document.getElementById("riposte");
+// const usePotion = document.getElementById("usePotion");
+// const victoryBtn = document.getElementById("victoryBtn");
 
 /////
+
+
+
 
 let currentMonster;
 
 buttonFightPlains.addEventListener("click", function () {
 
+
+
+
+
+
     currentMonster = wolf;
 
-    victoryBtn.addEventListener("click", function () {
+    const victory = document.getElementById("victoryWolf"); // ???
+
+//Button fight in template
+    const fstAtk = document.getElementById("fstAtkWolf");
+    const strAtk = document.getElementById("strAtkWolf");
+    const riposte = document.getElementById("riposteWolf");
+    const usePotion = document.getElementById("usePotionWolf");
+    const victoryBtn = document.getElementById("victoryBtnWolf");
+
+    divFight.classList.remove("noDisplay");
+
+    document.getElementById("victoryBtnWolf").addEventListener("click", function () {
         divFight.classList.add("noDisplay");
         document.getElementById("continuedForest").classList.remove("noDisplay");
     });
 
 
 
-    monster.innerHTML = `Des loups vous attaquent!`;
-    monsterAction.innerHTML = currentMonster.action("wait");
-    playerAction.innerHTML = player.action("wait",true);
-    describeMonster.innerHTML = currentMonster.describe();
-    describePlayer.innerHTML = player.describe(true);
+    document.getElementById("monsterActionWolf").innerHTML = currentMonster.action("wait");
+    document.getElementById("playerActionWolf").innerHTML = player.action("wait",true);
+    document.getElementById("describeMonsterWolf").innerHTML = currentMonster.describe();
+    document.getElementById("describePlayerWolf").innerHTML = player.describe(true);
 
-    fstAtk.innerHTML = "Attaque rapide";
-    strAtk.innerHTML = "Attaque lourde";
-    riposte.innerHTML = "Riposte";
-    usePotion.innerHTML = "Utiliser une potion";
+    document.getElementById("fstAtkWolf").innerHTML = "Attaque rapide";
+    document.getElementById("strAtkWolf").innerHTML = "Attaque lourde";
+    document.getElementById("riposteWolf").innerHTML = "Riposte";
+    document.getElementById("usePotionWolf").innerHTML = "Utiliser une potion";
 
     buttonFightPlains.classList.add("btnChoice");
     buttonFightPlains.innerHTML = "";
 
+
+    document.body.addEventListener("click", function (evt) {
+        let test = String(evt.target.id);
+        console.log(test);
+        if (evt.target.className === 'actionWolf' ) {
+            if (test.equals("fstAtkWolf") === true) {
+                document.body.getElementById("playerActionWolf").innerHTML = player.attackPfs(currentMonster);
+                document.getElementById("monsterActionWolf").innerHTML = currentMonster.attackPfs(player);
+            }
+            else if (evt.target.id === "strAtkWolf") {
+                document.getElementById("playerActionWolf").innerHTML = player.attackPfs(currentMonster);
+                document.getElementById("monsterActionWolf").innerHTML = currentMonster.attackPfs(player);
+            }
+            else if (evt.target.id === "riposteWolf") {
+                document.getElementById("playerActionWolf").innerHTML = player.attackPfs(currentMonster);
+                document.getElementById("monsterActionWolf").innerHTML = currentMonster.attackPfs(player);
+            }
+            else if (evt.target.id === "usePotionWolf") {
+                document.getElementById("playerActionWolf").innerHTML = player.usePotion();
+                document.getElementById("monsterActionWolf").innerHTML = currentMonster.attackPfs(player);
+            }
+            document.getElementById("describeMonsterWolf").innerHTML = currentMonster.describe();
+            document.getElementById("describePlayerWolf").innerHTML = player.describe(true);
+            victoryState();
+        }
+
+    })
+
 });
+
 
 buttonFightForest.addEventListener("click", function () {
 
@@ -301,38 +348,7 @@ buttonFightForest.addEventListener("click", function () {
 /////
 
 
-fstAtk.addEventListener("click", function () {
 
-    playerAction.innerHTML = player.attackPfs(currentMonster);
-    monsterAction.innerHTML = currentMonster.attackPfs(player);
-    describeMonster.innerHTML = currentMonster.describe();
-    describePlayer.innerHTML = player.describe(true);
-    victoryState();
-});
-
-strAtk.addEventListener("click", function () {
-    playerAction.innerHTML = player.attackPfs(currentMonster);
-    monsterAction.innerHTML = currentMonster.attackPfs(player);
-    describeMonster.innerHTML = currentMonster.describe();
-    describePlayer.innerHTML = player.describe(true);
-    victoryState();
-});
-
-riposte.addEventListener("click", function () {
-    playerAction.innerHTML = player.attackPfs(currentMonster);
-    monsterAction.innerHTML = currentMonster.attackPfs(player);
-    describeMonster.innerHTML = currentMonster.describe();
-    describePlayer.innerHTML = player.describe(true);
-    victoryState();
-});
-
-usePotion.addEventListener("click", function () {
-    playerAction.innerHTML = player.usePotion();
-    monsterAction.innerHTML = currentMonster.attackPfs(player);
-    describeMonster.innerHTML = currentMonster.describe();
-    describePlayer.innerHTML = player.describe(true);
-    victoryState();
-});
 
 function victoryState() {
     if (currentMonster.hp === 0) {

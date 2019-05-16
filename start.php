@@ -1,3 +1,8 @@
+<?php
+
+include 'controllers/fights.php'
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -42,7 +47,8 @@
                     <p>Aux sorties du village, vous entrez dans la forêt de Shlipak mais des bandits ont entendu votre conversation avec le vieil homme de la taverne et se sont tapis dans la forêt afin de vous tendre une embuscade.</p>
                     <div class="btnFight">
                         <button id="fightForest">Combattre !</button>
-                        <?php include "templates/fight.html" ?>
+                        <?php getFight("Bandit", "Un bandit vous attaque!"); ?>
+
                     </div>
                 </div>
                 <div class="noDisplay" id="continuedForest">
@@ -60,7 +66,7 @@
                 <p>Peut après êtres sortie du village vous vous faite attaquer par des loups.</p>
                 <div class="btnFight">
                     <button id="fightPlains">Combattre !</button>
-                    <?php include "templates/fight.html" ?>
+                    <?php getFight("Wolf", "Un loup vous attaque!"); ?>
                 </div>
                 <div class="noDisplay">
                     <p>Après ce combat durement reussi contre des loups exceptionnellement BALEZES, vous prenez le temps d'inspecter les environs et vous remarquez une pancarte qui vous indique la direction du port de Carmin-sur-Mer. Mais vous distinguez non loin de vous un interstice entre deux rochers.</p>
@@ -77,13 +83,13 @@
                 <p>Vous avez reussi à trouver l'entrée d'un ancien reseau de Tram construit par des gnomes il y a fort longtemp. Aujourd'hui, seule des gobelins malagauches vivent dans ces souterrain. Dailleurs, ils vous attaque!!</p>
                 <div class="btnFight">
                     <button id="fightCave">Combattre !</button>
-                    <?php include "templates/fight.html" ?>
+
+
                 </div>
                 <div class="noDisplay">
                     <p>Vous avez terrassé cet incroyable petite horde de gobelins mais vous sentez que quelque chose d'incroyablement plus puissant vous épis, tapie dans l'ombre. Vous continuez votre chemin jusqu'à un endroit où il se divise en deux, mais à ce même emplacement vous apercevez une menace beaucoup plus grande. Le Roi des Gobelins bloque le passage et il a une otage. Il vous défie! S'il gagne vous devenez son esclave. Mais si vous gagnez, vous liberez l'otage et aurait la possibilité de passer.</p>
                     <div class="btnFight">
                         <button id="fightCaveBoss">Combattre !</button>
-                        <?php include "templates/fight.html" ?>
                     </div>
                 </div>
 
@@ -104,7 +110,6 @@
                 <p>En arrivant sur la place centrale du port, vous remarquez une serveuse qui vous aguiche au loin mais des marins fort bourrés s'en prennent à vous.</p>
                 <div class="btnFight">
                     <button id="fightHarbor">Combattre !</button>
-                    <?php include "templates/fight.html" ?>
                 </div>
                 <div class="noDisplay">
                     <p>Vous avez calmé les marins et leur avez permis de désaouler quelque peu. L'un d'eux vient même s'excuser et vous offre une potion et repart dépiter. Cependant vous avez toujours besoin d'informations sur le chemin à prendre pour aller terrasser le mal. La serveuse continue de vous aguicher au loin, vous décidez donc d'aller l'interroger.</p>
@@ -117,7 +122,6 @@
                     <p>Les marins vous ont trouvé, certain vous reconaisse et explique à leurs capitaines que vous les avez tabassé dans le port. Il s'énerve et vous agresse.</p>
                     <div class="btnFight">
                         <button id="fightHarborBoss">Combattre !</button>
-                        <?php include "templates/fight.html" ?>
                     </div>
                 </div>
                 <div class="noDisplay">
@@ -135,14 +139,12 @@
                 <p>Vous entrez dans la jungle et remarquez au loin votre objectif. Le château du mal qui règne sur la région dépasse de la jungle de par sa grandeur, ce qui vous indique la direction à prendre. À ce moment précis des araignées vous attaque.</p>
                 <div class="btnFight">
                     <button id="fightJungle">Combattre !</button>
-                    <?php include "templates/fight.html" ?>
                 </div>
                 <div class="noDisplay">
                     <p>Dans le combat, vous vous enfoncez dans la jungle par indavertance, vous vous rendez compte que cous êtes devant la tanière d'une immense Guivre. Peut à peut elle sort de sa tanière et vous fixe du regard. C'est ainsi que débute un intense battle de regard.</p>
                     <p>Mais vous perdez patience, vous n'avez pas de temps à perdre et vous chargez la Guivre.</p>
                     <div class="btnFight">
                         <button id="fightJungleBoss">Combattre !</button>
-                        <?php include "templates/fight.html" ?>
                     </div>
                 </div>
 
@@ -163,7 +165,6 @@
                 <p>Vous aprecevez au loin le château du mal qui règne sur le royaume. Mais pendant que vous êtes dans vos pensées, des tréants en ont profité pour vous encercler et vous attaque.</p>
                 <div class="btnFight">
                     <button id="fightSwamp">Combattre !</button>
-                    <?php include "templates/fight.html" ?>
                 </div>
 
                 <div class="noDisplay">
@@ -173,7 +174,6 @@
                     <p>Maintenant que vous êtes au pied de l'arbre, une aura sombre se dégage de lui, il se tient devant vous et se lève, c'est un Tréans Maléfique, il vous attaque!</p>
                     <div class="btnFight">
                         <button id="fightSwampBoss">Combattre !</button>
-                        <?php include "templates/fight.html" ?>
                     </div>
                 </div>
 
@@ -197,7 +197,6 @@
                 <p> Tata yoyo !</p>
                 <div class="btnFight">
                     <button id="fightCastle">Combattre !</button>
-                    <?php include "templates/fight.html" ?>
                 </div>
 
                 <div class="noDisplay">
@@ -212,6 +211,9 @@
                     </div>
                 </div>
             </div>
+
+            <?php include "templates/fight.html" ?>
+
         </div>
     </section>
 </main>
