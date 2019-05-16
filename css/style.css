@@ -1,5 +1,5 @@
 body {
-    background-color: bisque;
+    background: url(../img/background.png);
 }
 main {
     display: flex;
@@ -7,6 +7,17 @@ main {
 }
 section {
     width:400px;
+}
+#story {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+    background-color:#e1ad6d;
+    height: 600px;
+    width: 500px;
+    padding: 10px 15px;
+    text-align: center;
 }
 .noDisplay {
     display: none;

@@ -184,7 +184,7 @@
                 <p>Pendant 20 longues années, vous vous êtes entrainé, vous avez même appri le Klingon.</p>
                 <p>Et maintenant vous vous sentez prêt à le venger.</p>
                 <p>A peine fini votre monologue interminable, que vous avez engagez le combat.</p>
-                <p> Tata yoyo !</p>
+                <p>yIHIv !</p>
                 <div class="button">
                     <button id="fightCastle">Combattre !</button>
                 </div>
