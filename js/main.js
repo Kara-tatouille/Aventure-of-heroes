@@ -241,14 +241,22 @@ const fstAtk = document.getElementById("fstAtk");
 const strAtk = document.getElementById("strAtk");
 const riposte = document.getElementById("riposte");
 const usePotion = document.getElementById("usePotion");
+const victoryBtn = document.getElementById("victoryBtn");
 
 /////
 
 let currentMonster;
 
-buttonFightForest.addEventListener("click", function () {
+buttonFightPlains.addEventListener("click", function () {
 
     currentMonster = wolf;
+
+    victoryBtn.addEventListener("click", function () {
+        divFight.classList.add("noDisplay");
+        document.getElementById("continuedForest").classList.remove("noDisplay");
+    });
+
+
 
     monster.innerHTML = `Des loups vous attaquent!`;
     monsterAction.innerHTML = currentMonster.action("wait");
@@ -261,6 +269,33 @@ buttonFightForest.addEventListener("click", function () {
     riposte.innerHTML = "Riposte";
     usePotion.innerHTML = "Utiliser une potion";
 
+    buttonFightPlains.classList.add("btnChoice");
+    buttonFightPlains.innerHTML = "";
+
+});
+
+buttonFightForest.addEventListener("click", function () {
+
+    currentMonster = bandit;
+
+    victoryBtn.addEventListener("click", function () {
+        divFight.classList.add("noDisplay");
+        document.getElementById("continuedForest").classList.remove("noDisplay");
+    });
+
+    monster.innerHTML = `Des bandits vous attaquent!`;
+    monsterAction.innerHTML = currentMonster.action("wait");
+    playerAction.innerHTML = player.action("wait", true);
+    describeMonster.innerHTML = currentMonster.describe();
+    describePlayer.innerHTML = player.describe(true);
+
+    fstAtk.innerHTML = "Attaque rapide";
+    strAtk.innerHTML = "Attaque lourde";
+    riposte.innerHTML = "Riposte";
+    usePotion.innerHTML = "Utiliser une potion";
+
+    buttonFightForest.classList.add("btnChoice");
+    buttonFightForest.innerHTML = "";
 });
 
 /////
@@ -312,6 +347,8 @@ function victoryState() {
         strAtk.innerHTML = "";
         riposte.innerHTML = "";
         usePotion.innerHTML = "";
+
+        victoryBtn.innerHTML = "Continuer";
     }
     if (player.hp === 0) {
         victory.innerHTML = "Défaite!!";
@@ -326,4 +363,5 @@ function victoryState() {
         riposte.innerHTML = "";
         usePotion.innerHTML = "";
     }
-};
+}
+
