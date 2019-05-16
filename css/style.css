@@ -1,3 +1,10 @@
 .noDisplay {
     display: none;
 }
+
+
+ .btnChoice {
+     background : transparent;
+     border: none;
+     cursor: pointer;
+ }
