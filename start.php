@@ -1,7 +1,5 @@
 <?php
-
-include 'controllers/fights.php'
-
+    include 'controllers/fights.php'
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -66,7 +64,7 @@ include 'controllers/fights.php'
                 <p>Peut après êtres sortie du village vous vous faite attaquer par des loups.</p>
                 <div class="btnFight">
                     <button id="fightPlains">Combattre !</button>
-                    <?php getFight("Wolf", "Un loup vous attaque!"); ?>
+                    <?php getFight("Wolf", "Loup des bois"); ?>
                 </div>
                 <div class="noDisplay">
                     <p>Après ce combat durement reussi contre des loups exceptionnellement BALEZES, vous prenez le temps d'inspecter les environs et vous remarquez une pancarte qui vous indique la direction du port de Carmin-sur-Mer. Mais vous distinguez non loin de vous un interstice entre deux rochers.</p>
@@ -218,7 +216,7 @@ include 'controllers/fights.php'
     </section>
 </main>
 
-<script src="./js/main.js"></script>
-<script src="./js/story.js"></script>
+<script src="js/main.js"></script>
+<script src="js/story.js"></script>
 </body>
 </html>

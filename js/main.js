@@ -9,9 +9,7 @@ class Character {
         this.potion = 2;
     }
 
-
     attack(target, efficiency) {
-
         //Si le joueur est en vie
         if (this.hp <= 0) {
             return `${this.name} est mort et ne peut pas attaquer!`
@@ -64,7 +62,6 @@ class Character {
     }
 
     attackPfs(target) {
-
         //Si le joueur est en vie
         if (this.hp <= 0) {
             return `${this.name} est mort et ne peut pas attaquer!`
@@ -102,7 +99,6 @@ class Character {
 
     //Boire une potion
     usePotion(amount) {
-
         //Si la personne peut boire une potion
         if (this.hp < this.maxhp) {
 
@@ -140,7 +136,6 @@ class Character {
 
 
     action(stance, isPlayer) {
-
         if (isPlayer) {
             if (stance === "ready") {
                 return `Vous vous tenez prêt à attaquer`
@@ -226,158 +221,80 @@ const buttonFightSwampBoss = document.getElementById("fightSwampBoss");
 const buttonFightCastle = document.getElementById("fightCastle");
 
 //Div fight in story
-const divFight = document.getElementById("fight");
+const victoryBtn = document.getElementById("victoryBtn");
 
-//Div fight in template
-// const monster = document.getElementById("monster");
-// const monsterAction = document.getElementById("monsterAction");
-// const playerAction = document.getElementById("playerAction");
-// const describeMonster = document.getElementById("describeMonster");
-// const describePlayer = document.getElementById("describePlayer");
-// const victory = document.getElementById("victory");
-//
-// //Button fight in template
-// const fstAtk = document.getElementById("fstAtk");
-// const strAtk = document.getElementById("strAtk");
-// const riposte = document.getElementById("riposte");
-// const usePotion = document.getElementById("usePotion");
-// const victoryBtn = document.getElementById("victoryBtn");
+// Managing fights event
+document.body.addEventListener("click", function (evt) {
+    if(typeof(String(evt.target.id).split('fight')[1]) !== 'undefined') {
+        let fightType = String(evt.target.nextSibling.nextSibling.id).split('fight')[1];
 
-/////
+        currentMonster = getMonster(fightType);
 
+        document.getElementById("fight"+fightType).classList.remove("noDisplay");
+        document.getElementById(fightType).classList.remove("noDisplay");
 
+        document.getElementById("victoryBtn"+fightType).addEventListener("click", function () {
+            document.getElementById("fight"+fightType).classList.add("noDisplay");
+            document.getElementById("continuedForest").classList.remove("noDisplay");
+        });
 
+        document.getElementById("monsterAction"+fightType).innerHTML = currentMonster.action("wait");
+        document.getElementById("playerAction"+fightType).innerHTML = player.action("wait",true);
+        document.getElementById("describeMonster"+fightType).innerHTML = currentMonster.describe();
+        document.getElementById("describePlayer"+fightType).innerHTML = player.describe(true);
 
-let currentMonster;
+        buttonFightPlains.classList.add("btnChoice");
+        buttonFightPlains.innerHTML = "";
+    }
+});
 
-buttonFightPlains.addEventListener("click", function () {
+//Managing actions events
+document.body.addEventListener("click", function (evt) {
+    let eventId = String(evt.target.id);
+    let eventClass = String(evt.target.className).split(' ')[0];
+    let monsterType = eventClass.substring(6);
 
-
-
-
-
-
-    currentMonster = wolf;
-
-    const victory = document.getElementById("victoryWolf"); // ???
-
-//Button fight in template
-    const fstAtk = document.getElementById("fstAtkWolf");
-    const strAtk = document.getElementById("strAtkWolf");
-    const riposte = document.getElementById("riposteWolf");
-    const usePotion = document.getElementById("usePotionWolf");
-    const victoryBtn = document.getElementById("victoryBtnWolf");
-
-    divFight.classList.remove("noDisplay");
-
-    document.getElementById("victoryBtnWolf").addEventListener("click", function () {
-        divFight.classList.add("noDisplay");
-        document.getElementById("continuedForest").classList.remove("noDisplay");
-    });
-
-
-
-    document.getElementById("monsterActionWolf").innerHTML = currentMonster.action("wait");
-    document.getElementById("playerActionWolf").innerHTML = player.action("wait",true);
-    document.getElementById("describeMonsterWolf").innerHTML = currentMonster.describe();
-    document.getElementById("describePlayerWolf").innerHTML = player.describe(true);
-
-    document.getElementById("fstAtkWolf").innerHTML = "Attaque rapide";
-    document.getElementById("strAtkWolf").innerHTML = "Attaque lourde";
-    document.getElementById("riposteWolf").innerHTML = "Riposte";
-    document.getElementById("usePotionWolf").innerHTML = "Utiliser une potion";
-
-    buttonFightPlains.classList.add("btnChoice");
-    buttonFightPlains.innerHTML = "";
-
-
-    document.body.addEventListener("click", function (evt) {
-        let test = String(evt.target.id);
-        console.log(test);
-        if (evt.target.className === 'actionWolf' ) {
-            if (test.equals("fstAtkWolf") === true) {
-                document.body.getElementById("playerActionWolf").innerHTML = player.attackPfs(currentMonster);
-                document.getElementById("monsterActionWolf").innerHTML = currentMonster.attackPfs(player);
-            }
-            else if (evt.target.id === "strAtkWolf") {
-                document.getElementById("playerActionWolf").innerHTML = player.attackPfs(currentMonster);
-                document.getElementById("monsterActionWolf").innerHTML = currentMonster.attackPfs(player);
-            }
-            else if (evt.target.id === "riposteWolf") {
-                document.getElementById("playerActionWolf").innerHTML = player.attackPfs(currentMonster);
-                document.getElementById("monsterActionWolf").innerHTML = currentMonster.attackPfs(player);
-            }
-            else if (evt.target.id === "usePotionWolf") {
-                document.getElementById("playerActionWolf").innerHTML = player.usePotion();
-                document.getElementById("monsterActionWolf").innerHTML = currentMonster.attackPfs(player);
-            }
-            document.getElementById("describeMonsterWolf").innerHTML = currentMonster.describe();
-            document.getElementById("describePlayerWolf").innerHTML = player.describe(true);
-            victoryState();
+    if (eventClass === 'action'+monsterType ) {
+        if (eventId === "fstAtk"+monsterType) {
+            document.getElementById("playerAction"+monsterType).innerHTML = player.attackPfs(currentMonster);
+            document.getElementById("monsterAction"+monsterType).innerHTML = currentMonster.attackPfs(player);
+        }
+        else if (eventId === "strAtk"+monsterType) {
+            document.getElementById("playerAction"+monsterType).innerHTML = player.attackPfs(currentMonster);
+            document.getElementById("monsterAction"+monsterType).innerHTML = currentMonster.attackPfs(player);
+        }
+        else if (eventId === "riposte"+monsterType) {
+            document.getElementById("playerAction"+monsterType).innerHTML = player.attackPfs(currentMonster);
+            document.getElementById("monsterAction"+monsterType).innerHTML = currentMonster.attackPfs(player);
+        }
+        else if (eventId === "usePotion"+monsterType) {
+            document.getElementById("playerAction"+monsterType).innerHTML = player.usePotion();
+            document.getElementById("monsterAction"+monsterType).innerHTML = currentMonster.attackPfs(player);
         }
 
-    })
-
+        document.getElementById("describeMonster"+monsterType).innerHTML = currentMonster.describe();
+        document.getElementById("describePlayer"+monsterType).innerHTML = player.describe(true);
+        victoryState(monsterType);
+    }
 });
 
-
-buttonFightForest.addEventListener("click", function () {
-
-    currentMonster = bandit;
-
-    victoryBtn.addEventListener("click", function () {
-        divFight.classList.add("noDisplay");
-        document.getElementById("continuedForest").classList.remove("noDisplay");
-    });
-
-    monster.innerHTML = `Des bandits vous attaquent!`;
-    monsterAction.innerHTML = currentMonster.action("wait");
-    playerAction.innerHTML = player.action("wait", true);
-    describeMonster.innerHTML = currentMonster.describe();
-    describePlayer.innerHTML = player.describe(true);
-
-    fstAtk.innerHTML = "Attaque rapide";
-    strAtk.innerHTML = "Attaque lourde";
-    riposte.innerHTML = "Riposte";
-    usePotion.innerHTML = "Utiliser une potion";
-
-    buttonFightForest.classList.add("btnChoice");
-    buttonFightForest.innerHTML = "";
-});
-
-/////
-
-
-
-
-function victoryState() {
+function victoryState(monster) {
     if (currentMonster.hp === 0) {
-        victory.innerHTML = "Victoire!!";
-        monster.innerHTML = ``;
-        monsterAction.innerHTML = "";
-        playerAction.innerHTML = "";
-        describeMonster.innerHTML = "";
-        describePlayer.innerHTML = "";
-
-        fstAtk.innerHTML = "";
-        strAtk.innerHTML = "";
-        riposte.innerHTML = "";
-        usePotion.innerHTML = "";
-
-        victoryBtn.innerHTML = "Continuer";
+        document.getElementById("victory"+monster).innerHTML = "Victoire!!";
+        document.getElementById("victoryDiv"+monster).classList.remove("noDisplay");
     }
     if (player.hp === 0) {
-        victory.innerHTML = "Défaite!!";
-        monster.innerHTML = ``;
-        monsterAction.innerHTML = "";
-        playerAction.innerHTML = "";
-        describeMonster.innerHTML = "";
-        describePlayer.innerHTML = "";
-
-        fstAtk.innerHTML = "";
-        strAtk.innerHTML = "";
-        riposte.innerHTML = "";
-        usePotion.innerHTML = "";
+        document.getElementById("victory"+monster).innerHTML = "Defaite.";
+        document.getElementById("victoryDiv"+monster).classList.remove("noDisplay");
     }
 }
 
+function getMonster(monster) {
+    switch (monster) {
+        case 'Wolf':
+            return wolf;
+
+        case 'Bandit':
+            return bandit;
+    }
+}
