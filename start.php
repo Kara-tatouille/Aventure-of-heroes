@@ -13,9 +13,9 @@
 <main>
     <section>
         <div class="skills">
-            <div class="health"></div>
-            <div class="attack"></div>
-            <div class="xp"></div>
+            <div class="health" id="health"></div>
+            <div class="attack" id="attack"></div>
+            <div class="xp" id="xp"></div>
         </div>
         <div id="story">
             <div id="intro">
@@ -234,5 +234,6 @@
 
 <script src="js/main.js"></script>
 <script src="js/story.js"></script>
+
 </body>
 </html>

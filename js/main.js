@@ -285,6 +285,10 @@ document.body.addEventListener("click", function (evt) {
         document.getElementById("describeMonster"+monsterType).innerHTML = monsterTypeObject.describe();
         document.getElementById("describePlayer"+monsterType).innerHTML = player.describe(true);
         victoryState(monsterType);
+
+        document.getElementById("health").innerHTML = player.hp+"/"+player.maxhp;
+        document.getElementById("attack").innerHTML = player.atk;
+        document.getElementById("xp").innerHTML = player.xp
     }
 
     function victoryState(monster) {
