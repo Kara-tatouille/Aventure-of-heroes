@@ -1,6 +1,6 @@
 # Adventure of Heroes
 
-Bienvenu dans notre jeu ou vous allez devenir le héros. Une histoire avec plusieurs voies, plusieurs monstres et deux issues la mort ou la victoire !
+Bienvenu dans notre jeu ou vous allez devenir le héros. Une histoire avec plusieurs voies, plusieurs monstres et deux issues: La mort ou la victoire !
 
 # Objectifs
 > Atteindre le niveau 5
@@ -14,5 +14,8 @@ Grâce à un système de combats  ou chaque coups de l'ennemis est choisis aléa
 Vous n'êtes pas assurer de toujours gagner de manière aisé et donc une gestion efficaces des potions est de mise. 
 
 ## Map
+Vous commencez depuis la Taverne => Vous pouvez choisir entre la Plaine et la Forêt => Le port ou un passage souterrain => Les marécages ou  la Jungle et enfin le Big Boss Le Roi Sorcier !
 
-Vous commencez depuis la Taverne => Vous pouvez choisir entre La Plaine et la Forêt => Le port ou un passage souterrain => Les marécages ou  la Jungle et enfin le Big Boss Le Roi Sorcier !
+##
+---
+La base de données s'appelle: RogueLike.
