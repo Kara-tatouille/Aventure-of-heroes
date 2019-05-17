@@ -16,12 +16,12 @@
     <img src="./img/logo.png" alt="gamelogo">
 </header>
 <main>
-    <section>
+    <section class="flex">
     <div class="skills">
-        <div id="health" class="health">100/100 PV</div>
-        <div id="attack" class="attack">30 ATK</div>
-        <div id="xp" class="xp">0 XP</div>
-        <div id="potion" class="potion">2/2 P</div>
+        <div id="health" class="navHhealth">100/100 PV</div>
+        <div id="attack" class="navAttack">30 ATK</div>
+        <div id="xp" class="navXp">0 XP</div>
+        <div id="potion" class="navPotion">2/2 P</div>
     </div>
         <div id="story">
             <div id="intro">

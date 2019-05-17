@@ -22,14 +22,14 @@ session_start();
             <div class="buttonDeco">    
                 <a class="disconnect" href="./controllers/disconnect.php">Déconnexion</a>
             </div>
-                <h1 class="welcome">Bienvenu <span class="welcome"><?= $_SESSION['name']; ?></span></h1>                   
+                <h1 class="welcome">Bienvenue <span class="welcome"><?= $_SESSION['name']; ?></span></h1>                   
                 <p class="introText">Dans Adventure of Heroes tu débutes la partie avec <span class="introText"><?= $user['health']; ?></span> points de vie et  <span class="introText"><?= $user['attack'] ?></span> points d'attaque.</p>
                 <p class="introText">Tu commences évidement l'aventure avec <span class="introText"><?= $user['xp'] ?></span> points d'expériences.</p>
             <div class="buttonStart">
                 <a class="start" href="./start.php">Commencer</a>
             </div>
             <?php else: ?>
-            <form action="./controllers/add.php" method="POST" autocomplete="off">
+            <form class="flex" action="./controllers/add.php" method="POST" autocomplete="off">
                 <div class="pseudoPlace">
                     <input class="pseudoWritting" placeholder="Pseudo" type="text" name="name" required>
                 </div>

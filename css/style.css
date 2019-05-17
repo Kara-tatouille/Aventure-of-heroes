@@ -1,140 +1,197 @@
-body {
-    background: url(/img/background.png);
-    font-family: 'Baloo Bhai', cursive, 'serif', 'sans-serif';
+a {
+    color: white;
+}
+p{  
+    padding: 5px 0;
 }
 /* HEADER */
 header{
     display: flex;
-    justify-content: center;
-    padding: 30px;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 5px;
 }
 header img{
     height: 150px;
     width: 160px;
 }
-/* MAIN */
-main {
-    display: flex;
-    justify-content: center;
+/* BODY */
+body{
+    background: 
+        url("../img/background.png")
+        center
+        no-repeat
+        fixed;
+    background-size: cover;
+    height: 100vh;
 }
-/* SKILLS */
-/* .skills, #story { */
-p, h4, h2 {
-    border: 2px solid black;
-    background-color: #e1ad6d;
-    width: 500px;
-    padding: 10px 15px;
-    text-align: center;
-    margin: 10px;
-    border-radius: 10px 0 10px 0;
-}
-h4 {
-    color:#178d00;
-}
-.inform {
-
-}
-.skills {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    color: white;
-}
-.health, .attack, .xp, .potion {
-    padding: 5px;
-    width: 150px;
-    border: 1px solid black;
-    background-color: #8f7e4f;
-    box-shadow: inset 0px 0px 7px 0px black;
-}
-/* CONTENT */
 .flex {
     display: flex;
     flex-direction: column;
 }
-/* FIGHT */
-.fightBtnAtk {
+section {
+    width: 600px;
+    margin-bottom: 50px;
+}
+/* ACCUEIL */
+main{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    padding-top: 30px;
+    justify-content: center;
 }
-/* BUTTONS */
-button {
+.introTitle, .introExplain, .introGoodLuck, .registerSection {
+    border: 2px solid black;
+    background-color: #e1ad6d;
     padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    background-color: #8f7e4f;
-    transition: all 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    text-align: center;
+    border-radius: 15px 0 15px 0;
+}
+.introTitle, .introGoodLuck {
+    padding: 0;
+}
+.table {
+    border: 1px solid black;
+}
+.table span {
+    padding: 5px 0;
+    width: 150px;
+}
+.sup{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+}
+.btnPlay {
+    text-align: center;
     position: relative;
-    overflow: hidden;
-    color: white;
-    margin: 15px;
-    z-index: 0;
-    box-shadow: 1px 1px 2px black;
+    top: -15px;
 }
-button:after {
-    transition: all 0.3s ease-in-out;
-    content: "";
-    display: block;
-    background-color:#524632;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: translateY(-100%);
-    z-index: -1;
-}
-button:hover:after{
-    transform: translateY(0);
-}
-button:hover {
-    color: white;
-}
-/* TEXTE */
-h4 {
+.play{
+    color: black;
+    text-decoration: none;
+    background-color: #b0e46a;
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 20px;
     text-transform: uppercase;
 }
-.inform {
-    color: rgba(34, 51, 59, .8);
-    font-style: italic;
+/* REGISTER */
+.disconnect, .start{
+    position: relative;
 }
-.noDisplay {
-    display: none;
+form {
+    align-items: center;
 }
-/* ANIMATION */
-/* @keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translate(0, -20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
+form input {
+    padding: 10px 15px;
+    border: 1px solid black;
 }
-.fadeIn {
-    opacity: 0;
-    transition: .3s;
-    animation: fadeIn 1s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+.pseudoPlace{
+    display: flex;
+    margin-top: 50px;
 }
-.fadeIn.one {
-    animation-delay: 0.5s;
+.pseudoWritting{
+    padding:5px;
+    border-radius: 20px;
+    text-align: center;
 }
-.fadeIn.two {
-    animation-delay: 2.0s;
+::placeholder{
+    text-align: center;
 }
-.fadeIn.three {
-    animation-delay: 3.5s;
+
+.submitWrapper{
+    display: flex;
+    justify-content: center;
+    margin-top:20px;    
 }
-.fadeIn.four {
-    animation-delay: 5.0s;
+.connection{
+    padding:15px 25px;
+    border-radius: 20px;
+    background-color: #b0e46a;
+    cursor: pointer;
 }
-.fadeIn.five {
-    animation-delay: 6.5s;
+.welcome span {
+    color: darkgreen;
+    text-shadow: 1px 1px 2px #535353;
 }
-.fadeIn.six {
-    animation-delay: 3.0s;
-} */
+.disconnect {
+    text-decoration: none;
+    color:black;
+    text-align: center;
+    border:1px solid black;
+    padding:8px 35px;
+    border-radius: 20px;
+    background-color: #b0e46a;
+    top: -30px;
+    text-transform: uppercase;
+}
+.buttonDeco {
+    display: flex;
+    justify-content: center;
+}
+.introDiv{
+    display: flex;
+}
+.welcome {
+    margin-top:25px;
+    margin-bottom:25px;
+    text-align: center;
+}
+.introText{
+    text-align: center;
+    font-size: 15px;
+}
+.buttonStart {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.start{
+    text-decoration: none;
+    color:black;
+    text-align: center;
+    border:1px solid black;
+    padding:8px 35px;
+    border-radius: 20px;
+    background-color: #b0e46a;
+    bottom: -30px;
+    text-transform: uppercase;
+}
+/* Credits */
+.creditSection{
+    display: flex;
+    flex-direction: column;
+}
+
+#backgroundCredit {
+    background: url(/img/backgroundCredit.png)
+    no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.buttonRestart {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.restart{
+    text-decoration: none;
+    color:black;
+    text-align: center;
+    width: 14%;
+    border:1px solid black;
+    padding:8px 35px;
+    margin-top: 35px;
+    border-radius: 20px;
+    background-color: #b0e46a;
+}
+.divCongrats {
+    margin-top: 250px;
+    flex-direction: column;
+    display: flex;
+}
+.congrats {
+    color:white;
+    text-align: center;
+}
