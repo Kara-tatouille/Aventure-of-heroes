@@ -207,13 +207,12 @@ let endBoss = new Character   ("Lucie",             300, 20, 300);//commence lvl
 
 
 
-//Div fight dans story
-const victoryBtn = document.getElementById("victoryBtn");
-
 //Buttons "Combattre!"
 document.body.addEventListener("click", function (evt) {
     //Si le button à une ID comme "fightPlains" ou "fightQuelquechose"
     if(typeof(String(evt.target.id).split('fight')[1]) !== 'undefined') {
+        //Récupère l'ID du button clické
+        let fightId = evt.target.id;
         //Récupère le nom du monstre qui est combattu
         let fightType = String(evt.target.nextSibling.nextSibling.id).split('fight')[1];
         //Récupère l'objet du monstre qui est combattu
@@ -234,6 +233,9 @@ document.body.addEventListener("click", function (evt) {
     document.getElementById("victoryBtn"+fightType).addEventListener("click", function () {
         document.getElementById("fight"+fightType).classList.add("noDisplay");
         document.getElementById("actionDiv"+fightType).classList.add("noDisplay");
+
+        document.getElementById(fightId).classList.add("noDisplay");
+
         document.getElementById("continued"+fightType).classList.remove("noDisplay");
     });
 
