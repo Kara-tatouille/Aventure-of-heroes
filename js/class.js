@@ -101,7 +101,10 @@ class Character {
     //Boire une potion
     usePotion(amount) {
         //Si la personne peut boire une potion
-        if (this.hp < this.maxhp) {
+        if (this.hp <= 0) {
+            return `${this.name} est mort.`
+        }
+        else if (this.hp < this.maxhp) {
 
             //Verifie si il reste une potion, puis en retire une et soigne si il en reste
             if (this.potion === 0) {
@@ -126,9 +129,7 @@ class Character {
             }
         }
         //Si la personne est morte
-        else if (this.hp <= 0) {
-            return `${this.name} est mort.`
-        }
+
         //Si les hp sont au max
         else {
             return `${this.name} est déja au maximum de sa santé!`

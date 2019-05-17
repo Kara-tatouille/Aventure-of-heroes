@@ -30,6 +30,10 @@ body{
     display: flex;
     flex-direction: column;
 }
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
 section {
     width: 600px;
     margin-bottom: 50px;
@@ -40,7 +44,23 @@ main{
     padding-top: 30px;
     justify-content: center;
 }
-.introTitle, .introExplain, .introGoodLuck, .registerSection {
+.introTitle,
+.introExplain,
+.introGoodLuck,
+.registerSection,
+h4,
+h2,
+h1,
+#intro p,
+#tavern p,
+#forest p,
+#plains p,
+#cave p,
+#harbor p,
+#jungle p,
+#swamp p,
+#castle p,
+#creditGame p {
     border: 2px solid black;
     background-color: #e1ad6d;
     padding: 10px 15px;
@@ -49,6 +69,7 @@ main{
 }
 .introTitle, .introGoodLuck {
     padding: 0;
+    margin: 10px 0;
 }
 .table {
     border: 1px solid black;
@@ -105,10 +126,16 @@ form input {
     justify-content: center;
     margin-top:20px;    
 }
-.connection{
-    padding:15px 25px;
+.connection, .buttonDefeatBoss {
+    text-decoration: none;
+    color:black;
+    text-align: center;
+    border:1px solid black;
+    padding:8px 35px;
     border-radius: 20px;
     background-color: #b0e46a;
+    top: -30px;
+    text-transform: uppercase;
     cursor: pointer;
 }
 .welcome span {
@@ -158,6 +185,69 @@ form input {
     bottom: -30px;
     text-transform: uppercase;
 }
+/* STORY */
+.bgStory {
+    background: 
+        url("../img/bgStory.gif")
+        center
+        no-repeat
+        fixed;
+    background-size: cover;
+    height: 100vh;
+}
+.skills {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+}
+#health, #attack, #xp, #potion {
+    padding: 5px;
+    width: 120px;
+    border: 1px solid black;
+    background-color: #8f7e4f;
+    box-shadow: inset 0px 0px 7px 0px black;
+}
+/* BUTTONS */
+button {
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #8f7e4f;
+    transition: all 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    position: relative;
+    overflow: hidden;
+    color: white;
+    margin: 15px;
+    z-index: 0;
+    box-shadow: 1px 1px 2px black;
+    width: 45%;
+    margin: auto;
+}
+button:after {
+    transition: all 0.3s ease-in-out;
+    content: "";
+    display: block;
+    background-color:#524632;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 101%;
+    transform: translateY(-100%);
+    z-index: -1;
+}
+button:hover:after {
+    transform: translateY(0);
+}
+button:hover {
+    color: white;
+}
+.btnAttack {
+    margin-bottom: 10px;
+}
 /* Credits */
 .creditSection{
     display: flex;
@@ -179,7 +269,6 @@ form input {
     text-decoration: none;
     color:black;
     text-align: center;
-    width: 14%;
     border:1px solid black;
     padding:8px 35px;
     margin-top: 35px;
@@ -194,4 +283,86 @@ form input {
 .congrats {
     color:white;
     text-align: center;
+}
+.noDisplay {
+    display: none;
+}
+/* ANIMATION */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(0, -20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+.fadeIn {
+    opacity: 0;
+    transition: .3s;
+    animation: fadeIn 1s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+.fadeIn.one {
+    animation-delay: 0.5s;
+}
+.fadeIn.two {
+    animation-delay: 1s;
+}
+.fadeIn.three {
+    animation-delay: 1.5s;
+}
+.fadeIn.four {
+    animation-delay: 2s;
+}
+.fadeIn.five {
+    animation-delay: 2.5s;
+}
+.fadeIn.six {
+    animation-delay: 3s;
+}
+.fadeIn.seven {
+    animation-delay: 3.5s;
+}
+.fadeIn.eight {
+    animation-delay: 4s;
+}
+.fadeIn.nine {
+    animation-delay: 4.5s;
+}
+.fadeIn.ten {
+    animation-delay: 5s;
+}
+.fadeIn.eleven {
+    animation-delay: 5.5s;
+}
+.fadeIn.twelve {
+    animation-delay: 6s;
+}
+.fadeIn.thirteen {
+    animation-delay: 6.5s;
+}
+.fadeIn.fourteen {
+    animation-delay: 7s;
+}
+.fadeIn.fifteen {
+    animation-delay: 7.5s;
+}
+.fadeIn.sixteen {
+    animation-delay: 8s;
+}
+.fadeIn.seventeen {
+    animation-delay: 8.5s;
+}
+.fadeIn.eighteen {
+    animation-delay: 9s;
+}
+.fadeIn.nineteen {
+    animation-delay: 9.5s;
+}
+.fadeIn.twenty {
+    animation-delay: 10s;
+}
+.fadeIn.twentyOne {
+    animation-delay: 10.5s;
 }
