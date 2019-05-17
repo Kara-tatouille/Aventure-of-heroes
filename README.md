@@ -3,7 +3,7 @@
 Bienvenu dans notre jeu ou vous allez devenir le héros. Une histoire avec plusieurs voies, plusieurs monstres et deux issues: La mort ou la victoire !
 
 # Objectifs
-- Atteindre le niveau 5
+- Atteindre le niveau 5 (non obligatoire)
 - Vaincre le Roi Sorcier
 
 ## Choisissez votre chemin
