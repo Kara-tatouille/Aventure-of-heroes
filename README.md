@@ -16,6 +16,5 @@ Vous n'êtes pas assurer de toujours gagner de manière aisé et donc une gestio
 ## Map
 Vous commencez depuis la Taverne => Vous pouvez choisir entre la Plaine et la Forêt => Le port ou un passage souterrain => Les marécages ou  la Jungle et enfin le Big Boss Le Roi Sorcier !
 
-##
 ---
-La base de données s'appelle: RogueLike.
+  *La base de données s'appelle: RogueLike.*
