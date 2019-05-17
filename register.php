@@ -1,38 +1,45 @@
 <?php 
 require('./controllers/getLastUser.php');
+require('./controllers/getLastBoss.php');
 session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <LINK REL="SHORTCUT ICON" href="./img/favicon.ico">
+    <link rel="stylesheet" href="./css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Inscription</title>
 </head>
 <body>
+    <?php require_once('./templates/header.html') ?>    
     <main>
-        <section>
+        <section class="registerSection">
             <?php if(isset($_SESSION['name'])): ?>
-                <a classs="disconnect" href="./controllers/disconnect.php">Me déconnecter</a>
-                <p>Bienvenue <span><?= $_SESSION['name']; ?></span>, dans cette aventure pleine de rebondissement qu'est "BLABLA" ! </p>
-                <p>Tu débutes la partie avec <span><?= $user['health']; ?></span> points de vie et une force d'attaque de <span><?= $user['attack'] ?></span></p>
-                <p>Comme tu t'en doutes, tu débutes la partie avec... accroches toi bien... <span><?= $user['xp'] ?></span> points d'expérience. Mais je suis persuadé qu'un valeureux guerrier comme toi ne va pas en rester là !</p>
+            <div class="buttonDeco">    
+                <a class="disconnect" href="./controllers/disconnect.php">Déconnexion</a>
+            </div>
+                <h1 class="welcome">Bienvenu <span class="welcome"><?= $_SESSION['name']; ?></span></h1>                   
+                <p class="introText">Dans Adventure of Heroes tu débutes la partie avec <span class="introText"><?= $user['health']; ?></span> points de vie et  <span class="introText"><?= $user['attack'] ?></span> points d'attaque.</p>
+                <p class="introText">Tu commences évidement l'aventure avec <span class="introText"><?= $user['xp'] ?></span> points d'expériences.</p>
+            <div class="buttonStart">
+                <a class="start" href="./start.php">Commencer</a>
+            </div>
             <?php else: ?>
-            <form action="./controllers/add.php" method="POST">
-                <div>
-                    <label for="pseudo">Veuillez choisir un pseudo :</label>
-                    <input type="text" id='pseudo' name="name" required>
-                    <span id="error"></span>
+            <form action="./controllers/add.php" method="POST" autocomplete="off">
+                <div class="pseudoPlace">
+                    <input class="pseudoWritting" placeholder="Pseudo" type="text" name="name" required>
                 </div>
                 <div class="submitWrapper">
-                    <input type="submit" id="submit" name="submit" value="S'inscrire">
+                    <input class="connection"  type="submit" value="Connexion">
                 </div>
             </form>
+            
             <?php endif; ?>
         </section>
     </main>
-
 </body>
 </html>

@@ -1,24 +1,140 @@
 body {
-    background: url(../img/background.png);
+    background: url(/img/background.png);
+    font-family: 'Baloo Bhai', cursive, 'serif', 'sans-serif';
 }
+/* HEADER */
+header{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+header img{
+    height: 150px;
+    width: 160px;
+}
+/* MAIN */
 main {
     display: flex;
     justify-content: center;
 }
-section {
-    width:400px;
-}
-#story {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+/* SKILLS */
+/* .skills, #story { */
+p, h4, h2 {
     border: 2px solid black;
-    background-color:#e1ad6d;
-    height: 600px;
+    background-color: #e1ad6d;
     width: 500px;
     padding: 10px 15px;
     text-align: center;
+    margin: 10px;
+    border-radius: 10px 0 10px 0;
+}
+h4 {
+    color:#178d00;
+}
+.inform {
+    
+}
+.skills {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+}
+.health, .attack, .xp {
+    padding: 5px;
+    width: 150px;
+    border: 1px solid black;
+    background-color: #8f7e4f;
+    box-shadow: inset 0px 0px 7px 0px black;
+}
+/* CONTENT */
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+/* FIGHT */
+.fightBtnAtk {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/* BUTTONS */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #8f7e4f;
+    transition: all 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    position: relative;
+    overflow: hidden;
+    color: white;
+    margin: 15px;
+    z-index: 0;
+    box-shadow: 1px 1px 2px black;
+}
+button:after {
+    transition: all 0.3s ease-in-out;
+    content: "";
+    display: block;
+    background-color:#524632;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-100%);
+    z-index: -1;
+}
+button:hover:after{
+    transform: translateY(0);
+}
+button:hover {
+    color: white;
+}
+/* TEXTE */
+h4 {
+    text-transform: uppercase;
+}
+.inform {
+    color: rgba(34, 51, 59, .8);
+    font-style: italic;
 }
 .noDisplay {
     display: none;
 }
+/* ANIMATION */
+/* @keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(0, -20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+.fadeIn {
+    opacity: 0;
+    transition: .3s;
+    animation: fadeIn 1s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+.fadeIn.one {
+    animation-delay: 0.5s;
+}
+.fadeIn.two {
+    animation-delay: 2.0s;
+}
+.fadeIn.three {
+    animation-delay: 3.5s;
+}
+.fadeIn.four {
+    animation-delay: 5.0s;
+}
+.fadeIn.five {
+    animation-delay: 6.5s;
+}
+.fadeIn.six {
+    animation-delay: 3.0s;
+} */
