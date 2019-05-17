@@ -51,6 +51,7 @@ class Character {
                             ${this.name} a drop une potion!`
                 }
                 else {
+                    checkXp();
                     return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!`
                 }
             }
@@ -83,7 +84,7 @@ class Character {
                 }
             }
             else {
-                return `${target.name} est déja mort, ${this.name} ne peut pas attaquer!YYYYY`
+                return `${target.name} est déja mort, ${this.name} ne peut pas attaquer!`
             }
         }
 
@@ -221,7 +222,7 @@ document.body.addEventListener("click", function (evt) {
         //Affiche la scène de combat
         document.getElementById("fight"+fightType).classList.remove("noDisplay");
         document.getElementById(fightType).classList.remove("noDisplay");
-
+        document.getElementById("actionDiv"+fightType).classList.remove("noDisplay");
 
         document.getElementById("monsterAction"+fightType).innerHTML = currentMonster.action("wait");
         document.getElementById("playerAction"+fightType).innerHTML = player.action("wait",true);
@@ -232,6 +233,7 @@ document.body.addEventListener("click", function (evt) {
     //Button victoire
     document.getElementById("victoryBtn"+fightType).addEventListener("click", function () {
         document.getElementById("fight"+fightType).classList.add("noDisplay");
+        document.getElementById("actionDiv"+fightType).classList.add("noDisplay");
         document.getElementById("continued"+fightType).classList.remove("noDisplay");
     });
 
@@ -248,7 +250,6 @@ document.body.addEventListener("click", function (evt) {
     let monsterType = eventClass.substring(6);
     //Récupère l'objet combattu
     let monsterTypeObject = getMonster(monsterType);
-    // console.log(monsterType);
 
     //Si le button est un button "actionQuelquechose"
     if (eventClass === 'action'+monsterType ) {
@@ -316,8 +317,10 @@ function getMonster(monster) {
             return guivreBoss;
         case "treant":
             return treant;
-        case "treantboss":
+        case "treantBoss":
             return treantBoss;
+        case "endBoss":
+            return endBoss;
         default:
             return "Mob not found in getMonster()!"
     }

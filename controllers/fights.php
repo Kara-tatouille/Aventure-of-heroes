@@ -8,10 +8,13 @@
                 <p id="describeMonster', $type ,'"></p>
                 <p id="describePlayer', $type ,'"></p>
 
-                <button class="action',$type,' btnChoice" id="fstAtk', $type ,'">Attaque rapide</button >
-                <button class="action',$type,' btnChoice" id="strAtk', $type ,'">Attaque lourde</button >
-                <button class="action',$type,' btnChoice" id="riposte', $type ,'">Riposte</button >
-                <button class="action',$type,' btnChoice" id="usePotion', $type ,'">Utiliser une potion</button >
+                <div id="actionDiv',$type ,'" class="noDisplay">
+                    <button class="action',$type,' btnChoice" id="fstAtk', $type ,'">Attaque rapide</button >
+                    <button class="action',$type,' btnChoice" id="strAtk', $type ,'">Attaque lourde</button >
+                    <button class="action',$type,' btnChoice" id="riposte', $type ,'">Riposte</button >
+                    <button class="action',$type,' btnChoice" id="usePotion', $type ,'">Utiliser une potion</button >
+                </div>
+
 
                 <div class="noDisplay" id="victoryDiv', $type ,'">
                     <h1 id="victory', $type ,'"></h1>

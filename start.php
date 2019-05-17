@@ -49,7 +49,7 @@
 
                     </div>
                 </div>
-                <div class="noDisplay" id="continuedForest">
+                <div class="noDisplay" id="continuedbandit">
                     <p>Vaincu, le corps des bandits sont allongés sur le sol. Vous inspectez scrupuleusement la forêt et remarquez une pancarte qui vous indique le port de Carmin-sur-Mer. Aussi, un rouleau semble depasser d'un des sacs des bandits cela semble ressembl à une carte.</p>
                     <div class="button">
                         <button id="btnCaveFromForest">Suivre la carte</button>
@@ -64,9 +64,9 @@
                 <p>Peut après êtres sortie du village vous vous faite attaquer par des loups.</p>
                 <div class="btnFight">
                     <button id="fightPlains">Combattre !</button>
-                    <?php getFight("wolf", "Loup des plaines"); ?>
+                    <?php getFight("wolf", "un Loup des plaines vous attaque!"); ?>
                 </div>
-                <div class="noDisplay"  id="continuedPlains">
+                <div class="noDisplay"  id="continuedwolf">
                     <p>Après ce combat durement reussi contre des loups exceptionnellement BALEZES, vous prenez le temps d'inspecter les environs et vous remarquez une pancarte qui vous indique la direction du port de Carmin-sur-Mer. Mais vous distinguez non loin de vous un interstice entre deux rochers.</p>
                     <div class="button">
                         <button id="btnCaveFromPlains">Interstice entre deux rochers</button>
@@ -86,16 +86,16 @@
 
 
                 </div>
-                <div class="noDisplay" id="continuedCave">
+                <div class="noDisplay" id="continuedgoblin">
                     <p>Vous avez terrassé cet incroyable petite horde de gobelins mais vous sentez que quelque chose d'incroyablement plus puissant vous épis, tapie dans l'ombre. Vous continuez votre chemin jusqu'à un endroit où il se divise en deux, mais à ce même emplacement vous apercevez une menace beaucoup plus grande. Le Roi des Gobelins bloque le passage et il a une otage. Il vous défie! S'il gagne vous devenez son esclave. Mais si vous gagnez, vous liberez l'otage et aurait la possibilité de passer.</p>
                     <div class="btnFight">
                         <button id="fightCaveBoss">Combattre !</button>
-                        <?php getFight("goblinBoss", "Un bandit vous attaque!"); ?>
+                        <?php getFight("goblinBoss", "Le roi des goblins vous attaque!"); ?>
 
                     </div>
                 </div>
 
-                <div class="noDisplay"  id="continuedBisCave">
+                <div class="noDisplay"  id="continuedgoblinBoss">
                     <p>Vous avez défait le Roi des Gobelins. L'otage est libre ! Elle vous est grandement reconnaissante. Pour vous remercier, elle vous laisse pratiquer le GitPull/GitPush avec elle.</p>
 
                     <p>Ceci fait, vous reprenez votre aventure. Deux chemin se sépare, leur destination est gravée sur les parois.</p>
@@ -115,7 +115,7 @@
                     <?php getFight("sailor", "Un marin ivre vous attaque!"); ?>
 
                 </div>
-                <div class="noDisplay" id="continuedHarbor">
+                <div class="noDisplay" id="continuedsailor">
                     <p>Vous avez calmé les marins et leur avez permis de désaouler quelque peu. L'un d'eux vient même s'excuser et vous offre une potion et repart dépiter. Cependant vous avez toujours besoin d'informations sur le chemin à prendre pour aller terrasser le mal. La serveuse continue de vous aguicher au loin, vous décidez donc d'aller l'interroger.</p>
                     <p>Vous arrivez devant elle et vous lui présenter toutes vos salutations les plus distinguées. vus lui demander par la suite la marche à suivre pour se rendre au domaine du mal qui règne sur la région. elle vous dit qu'elle ne vous répondra qu'en échange d'un service de votre part.</p>
                     <p class="inform">Vous acceptez</p>
@@ -130,7 +130,7 @@
 
                     </div>
                 </div>
-                <div class="noDisplay"  id="continuedBisHarbor">
+                <div class="noDisplay"  id="continuedsailorBoss">
                     <p>Vous avez résigné les marins à vous conduire à bon port mais ils trouvent que vous les utilisez bon gré, mal gré, pour arriver sur la fin.</p>
                     <div class="button">
                         <button id="btnJungleFromHarbor">S'arrimer à la jungle</button>
@@ -147,7 +147,7 @@
                     <button id="fightJungle">Combattre !</button>
                     <?php getFight("spider", "Une araignée géante vous attaque!"); ?>
                 </div>
-                <div class="noDisplay" id="continuedJungle">
+                <div class="noDisplay" id="continuedspider">
                     <p>Dans le combat, vous vous enfoncez dans la jungle par indavertance, vous vous rendez compte que cous êtes devant la tanière d'une immense Guivre. Peut à peut elle sort de sa tanière et vous fixe du regard. C'est ainsi que débute un intense battle de regard.</p>
                     <p>Mais vous perdez patience, vous n'avez pas de temps à perdre et vous chargez la Guivre.</p>
                     <div class="btnFight">
@@ -157,7 +157,7 @@
                     </div>
                 </div>
 
-                <div class="noDisplay" id="continuedBisJungle">
+                <div class="noDisplay" id="continuedguivreBoss">
                     <p>Bien joué! Vous avez peut-être perdu le battle de regard mais elle y a perdu la vie.</p>
                     <p>Ceci fait, vous remorquez après ce dur combat que les portes du château se trouvent devant non loin de vous.</p>
                     <div class="button">
@@ -179,7 +179,7 @@
 
                 </div>
 
-                <div class="noDisplay" id="continuedSwamp">
+                <div class="noDisplay" id="continuedtreant">
                     <p>Vous récupérez votre souffle et reprenez votre incursion dans ce marais en direction du château.</p>
                     <p>À l'aide de votre épée, vous tailladez lianes et liaires, découpez herbes et serpents afin de vous frayer un chemin dans ses eaux épaisses et visqueuses.</p>
                     <p>Cependant vous apercevez un arbre qui vous paraît plus robuste que les autres. Au fûr et à mesure que vous vous rapprochez de lui, le temps semble se dégrader, la luminosité s'assombrit.</p>
@@ -190,7 +190,7 @@
                     </div>
                 </div>
 
-                <div class="noDisplay" id="continuedBisSwamp">
+                <div class="noDisplay" id="continuedtreantBoss">
                     <p>Vous avez triomphé du Tréant Maléfique et vous vous rendez compte que vous êtes aux portes du château.</p>
                     <div class="button">
                         <button id="btnCastleFromSwamp">Continuer vers le château</button>
@@ -214,7 +214,7 @@
 
                 </div>
 
-                <div class="noDisplay" id="continuedForest">
+                <div class="noDisplay" id="continuedendBoss">
                     <p>Ce fut un combat violent. vous avez donné des coups terribles, mais n'en avez pas reçu de moins pire.</p>
                     <p>Cependant, il n'est pas tout à fait mort, même si cela ne saurait tarder.</p>
                     <p>Dans un dernier long soupir, il vous adresse ce dernier monologue: "Il y a 20 ans, un homme est bien venue en ces lieux. Mais il a terrassé le mal qui y régnait.</p>
