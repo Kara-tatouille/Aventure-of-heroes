@@ -21,5 +21,11 @@
                     <button class="action',$type,' btnChoice" id="victoryBtn', $type ,'">Continuer</button>
                 </div>
                 
+                
+                <div class="noDisplay" id="defeatDiv', $type ,'">
+                    <h1 id="defeat', $type ,'"></h1>
+                    <button class="action',$type,' btnChoice" id="defeatBtn', $type ,'">GAME OVER</button>
+                </div>
+                
             </div>';
     }

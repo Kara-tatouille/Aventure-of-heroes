@@ -12,7 +12,7 @@ class Character {
     attack(target, efficiency) {
         //Si le joueur est en vie
         if (this.hp <= 0) {
-            return `${this.name} est mort et ne peut pas attaquer!`
+            return `${this.name} est mort(e) et ne peut pas attaquer!`
         }
 
         //Si la cible à de la vie
@@ -47,25 +47,25 @@ class Character {
                 if (drop > 0.8 && this.potion < 2) {
                     this.potion++;
                     checkXp();
-                    return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!\n
+                    return `${this.name} a tué(e) ${target.name} et gagne ${target.xp} xp!\n
                             ${this.name} a drop une potion!`
                 }
                 else {
                     checkXp();
-                    return `${this.name} a tué ${target.name} et gagne ${target.xp} xp!`
+                    return `${this.name} a tué(e) ${target.name} et gagne ${target.xp} xp!`
                 }
             }
         }
 
         else {
-            return `${target.name} est déja mort, ${this.name} ne peut pas attaquer!`
+            return `${target.name} est déja mort(e), ${this.name} ne peut pas attaquer!`
         }
     }
 
     attackPfs(target) {
         //Si le joueur est en vie
         if (this.hp <= 0) {
-            return `${this.name} est mort et ne peut pas attaquer!`
+            return `${this.name} est mort(e) et ne peut pas attaquer!`
         }
             //Si la cible est en vie
             if (target.hp > 0) {
@@ -84,7 +84,7 @@ class Character {
                 }
             }
             else {
-                return `${target.name} est déja mort, ${this.name} ne peut pas attaquer!`
+                return `${target.name} est déja mort(e), ${this.name} ne peut pas attaquer!`
             }
         }
 
@@ -239,6 +239,11 @@ document.body.addEventListener("click", function (evt) {
         document.getElementById("continued"+fightType).classList.remove("noDisplay");
     });
 
+    //Button défaite
+    document.getElementById("defeatBtn"+fightType).addEventListener("click", function () {
+        window.location.href = "/controllers/disconnect.php";
+    })
+
     }
 });
 
@@ -288,8 +293,8 @@ document.body.addEventListener("click", function (evt) {
             document.getElementById("victoryDiv"+monster).classList.remove("noDisplay");
         }
         if (player.hp === 0) {
-            document.getElementById("victory"+monster).innerHTML = "Defaite.";
-            document.getElementById("victoryDiv"+monster).classList.remove("noDisplay");
+            document.getElementById("defeat"+monster).innerHTML = "Défaite.";
+            document.getElementById("defeatDiv"+monster).classList.remove("noDisplay");
         }
     }
 
