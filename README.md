@@ -3,8 +3,8 @@
 Bienvenu dans notre jeu ou vous allez devenir le héros. Une histoire avec plusieurs voies, plusieurs monstres et deux issues: La mort ou la victoire !
 
 # Objectifs
-> Atteindre le niveau 5
-> Vaincre le Roi Sorcier
+- Atteindre le niveau 5
+- Vaincre le Roi Sorcier
 
 ## Choisissez votre chemin
 Durant votre aventure vous allez devoir prendre des décisions qui vont impacter vos gains d’expérience et/ou vos drop de potions. Chaque choix vous mènera donc dans une map aux divers paysages et vous permettra de découvrir des monstres totalement différents. 
