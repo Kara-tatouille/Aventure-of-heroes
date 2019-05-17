@@ -1,6 +1,7 @@
 <?php
     include 'controllers/fights.php';
     include 'controllers/getLastBoss.php';
+    include 'controllers/getLastUser.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,9 +18,10 @@
 <main>
     <section>
     <div class="skills">
-        <div class="health">100 PV</div>
-        <div class="attack">15</div>
-        <div class="xp">0 XP</div>
+        <div id="health" class="health">100/100 PV</div>
+        <div id="attack" class="attack">30 ATK</div>
+        <div id="xp" class="xp">0 XP</div>
+        <div id="potion" class="potion">2/2 P</div>
     </div>
         <div id="story">
             <div id="intro">
@@ -226,7 +228,7 @@
                     <p>Mais une fois sans chef, cette armée se retrouve à envahir la région et s'attaquer aux innoncents et c'est pour cela qu'il y à 20 ans, apres avoir vaincu le mal, j'ai dû prendre sa place afin de réguler ces armées. Et c'est pour celà, qu'aujourd'hui, il t'incombre à toi aussi de prendre ma place...</p>
                     <p>Mon fils.</p>
                     <div class="button">
-                        <a href="./controllers/updateUser.php" id="end">Vous devenez le Roi-Sorcier à la place de <?= $lastBoss['name']?></a>
+                        <a href="./controllers/updateUser.php" id="end">Vous devenez le Roi-Sorcier à la place de <?= $lastBoss ?></a>
                     </div>
                 </div>
             </div>
@@ -235,8 +237,13 @@
         </div>
     </section>
 </main>
-
+<script src="js/class.js"></script>
+<script>
+    const endBoss  = new Character("<?= $lastBoss ?>", 300, 20, 300);
+    const player = new Character("<?= $user['name'] ?>", 100, 30, 0);
+</script>
 <script src="js/main.js"></script>
 <script src="js/story.js"></script>
+
 </body>
 </html>
