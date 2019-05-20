@@ -18,3 +18,7 @@ Vous commencez depuis la Taverne => Vous pouvez choisir entre la Plaine et la Fo
 
 ---
   **La base de données s'appelle: RogueLike.**
+  
+  
+  ### Le projet est en ligne (avec quelques modifications visuelles) :
+  Si jamais tu as la flemme de monter le projet dans une VM, tu peux accéder à notre projet à cette adresse (https://adventure-of-heroes.wesleyklein.fr/).
